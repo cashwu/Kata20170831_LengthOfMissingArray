@@ -31,6 +31,12 @@ namespace Kata20170831_LengthOfMissingArray
             LengthOfMissingArrayShouldBe(3, new[] { new object[] { 1, 2 }, new object[] { 1 }, new object[] { 1, 2, 3, 4 } });
         }
 
+        [TestMethod]
+        public void input_1_2_4_and_5_array_should_return_3()
+        {
+            LengthOfMissingArrayShouldBe(3, new [] { new object[] { 1, 2 }, new object[] { 4, 5, 1, 1 }, new object[] { 1 }, new object[] { 5, 6, 7, 8, 9 } });
+        }
+
         private static void LengthOfMissingArrayShouldBe(int expected, object[][] arrayOfArrays)
         {
             var kata = new Kata();
@@ -48,9 +54,10 @@ namespace Kata20170831_LengthOfMissingArray
             var result = 0;
             for (var i = 0; i < arrLength.Count; i++)
             {
-                if (i + 1 < arrLength.Count)
+                if (i + 1 < arrLength.Count && arrLength[i + 1] - arrLength[i] > 1)
                 {
-                    result = arrLength[i + 1] - arrLength[i] > 1 ? arrLength[i] + 1 : 0;
+                    result = arrLength[i] + 1;
+                    break;
                 }
             }
 
