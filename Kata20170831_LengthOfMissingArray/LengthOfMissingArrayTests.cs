@@ -44,9 +44,15 @@ namespace Kata20170831_LengthOfMissingArray
         }
 
         [TestMethod]
-        public void input_3_and_empty_array_should_return_3()
+        public void input_3_and_empty_array_should_return_0()
         {
             LengthOfMissingArrayShouldBe(0, new[] { new object[] { 1, 2, 3 }, new object[] { } });
+        }
+
+        [TestMethod]
+        public void input_3_and_null_array_should_return_0()
+        {
+            LengthOfMissingArrayShouldBe(0, new[] { new object[] { 1, 2, 3 }, null });
         }
 
         private static void LengthOfMissingArrayShouldBe(int expected, object[][] arrayOfArrays)
@@ -61,22 +67,12 @@ namespace Kata20170831_LengthOfMissingArray
     {
         public int GetLengthOfMissingArray(object[][] arrayOfArrays)
         {
-            if (arrayOfArrays == null)
+            if (arrayOfArrays == null || arrayOfArrays.Any(a => a == null || a.Length == 0))
             {
                 return 0;
-            }
-
-            for (int i = 0; i < arrayOfArrays.Length; i++)
-            {
-                Console.WriteLine(arrayOfArrays[i].Length);
             }
 
             var arrLength = arrayOfArrays.Select(arr => arr.Length).OrderBy(a => a).ToList();
-
-            if (arrLength.Any(a => a == 0))
-            {
-                return 0;
-            }
 
             var result = 0;
             for (var i = 0; i < arrLength.Count; i++)
