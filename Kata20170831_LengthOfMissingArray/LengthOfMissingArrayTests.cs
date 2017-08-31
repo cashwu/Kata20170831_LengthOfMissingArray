@@ -49,6 +49,15 @@ namespace Kata20170831_LengthOfMissingArray
     {
         public int GetLengthOfMissingArray(object[][] arrayOfArrays)
         {
+            if (arrayOfArrays == null)
+            {
+                return 0;
+            }
+
+            for (int i = 0; i < arrayOfArrays.Length; i++)
+            {
+                Console.WriteLine(arrayOfArrays[i].Length);
+            }
             var arrLength = arrayOfArrays.Select(arr => arr.Length).OrderBy(a => a).ToList();
 
             var result = 0;
