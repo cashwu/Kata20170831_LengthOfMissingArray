@@ -34,7 +34,13 @@ namespace Kata20170831_LengthOfMissingArray
         [TestMethod]
         public void input_1_2_4_and_5_array_should_return_3()
         {
-            LengthOfMissingArrayShouldBe(3, new [] { new object[] { 1, 2 }, new object[] { 4, 5, 1, 1 }, new object[] { 1 }, new object[] { 5, 6, 7, 8, 9 } });
+            LengthOfMissingArrayShouldBe(3, new[] { new object[] { 1, 2 }, new object[] { 4, 5, 1, 1 }, new object[] { 1 }, new object[] { 5, 6, 7, 8, 9 } });
+        }
+
+        [TestMethod]
+        public void input_0_array_should_return_0()
+        {
+            LengthOfMissingArrayShouldBe(0, null);
         }
 
         private static void LengthOfMissingArrayShouldBe(int expected, object[][] arrayOfArrays)
