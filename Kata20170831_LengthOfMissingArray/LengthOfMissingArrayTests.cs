@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170831_LengthOfMissingArray
@@ -10,6 +11,12 @@ namespace Kata20170831_LengthOfMissingArray
         public void input_empty_array_should_return_0()
         {
             LengthOfMissingArrayShouldBe(0, new object[][] { });
+        }
+
+        [TestMethod]
+        public void input_1_and_3_array_should_return_2()
+        {
+            LengthOfMissingArrayShouldBe(2, new[] { new object[] { 1 }, new object[] { 1, 2, 3 } });
         }
 
         private static void LengthOfMissingArrayShouldBe(int expected, object[][] arrayOfArrays)
@@ -24,7 +31,12 @@ namespace Kata20170831_LengthOfMissingArray
     {
         public int GetLengthOfMissingArray(object[][] arrayOfArrays)
         {
-            return 0;
+            if (arrayOfArrays.Length == 0)
+            {
+                return 0;
+            }
+
+            return arrayOfArrays[1].Length - arrayOfArrays[0].Length;
         }
     }
 }
